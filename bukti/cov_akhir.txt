@@ -1,0 +1,14 @@
+github.com/apache/answer/internal/service/search_parser/search_parser.go:41:	NewSearchParser		0.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:50:	ParseStructure		100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:109:	parseTags		19.2%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:155:	parseUserID		64.3%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:180:	parseVotes		100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:199:	parseWithin		90.9%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:219:	parseNotAccepted	100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:235:	parseIsQuestion		100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:251:	parseViews		100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:269:	parseAnswers		100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:288:	parseAccepted		100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:304:	parseQuestionID		100.0%
+github.com/apache/answer/internal/service/search_parser/search_parser.go:322:	parseIsAnswer		100.0%
+total:										(statements)		80.3%

@@ -1,0 +1,266 @@
+=== RUN   TestNumericFilters
+=== RUN   TestNumericFilters/parseVotes/normal:_filter_only
+=== RUN   TestNumericFilters/parseVotes/normal:_filter_after_text
+=== RUN   TestNumericFilters/parseVotes/normal:_surrounded_by_spaces
+=== RUN   TestNumericFilters/parseVotes/edge:_zero_is_valid_and_differs_from_-1
+=== RUN   TestNumericFilters/parseVotes/edge:_large_number
+=== RUN   TestNumericFilters/parseVotes/edge:_empty_query
+=== RUN   TestNumericFilters/parseVotes/edge:_filter_absent
+=== RUN   TestNumericFilters/parseVotes/edge:_duplicate_filter,_first_wins,_all_removed
+=== RUN   TestNumericFilters/parseVotes/edge:_keyword_is_case_sensitive
+=== RUN   TestNumericFilters/parseVotes/error:_no_digits
+=== RUN   TestNumericFilters/parseVotes/error:_negative_number
+=== RUN   TestNumericFilters/parseVotes/error:_letters_instead_of_digits
+=== RUN   TestNumericFilters/parseVotes/error:_space_after_colon
+=== RUN   TestNumericFilters/parseViews/normal:_filter_only
+=== RUN   TestNumericFilters/parseViews/normal:_filter_after_text
+=== RUN   TestNumericFilters/parseViews/normal:_surrounded_by_spaces
+=== RUN   TestNumericFilters/parseViews/edge:_zero_is_valid_and_differs_from_-1
+=== RUN   TestNumericFilters/parseViews/edge:_large_number
+=== RUN   TestNumericFilters/parseViews/edge:_empty_query
+=== RUN   TestNumericFilters/parseViews/edge:_filter_absent
+=== RUN   TestNumericFilters/parseViews/edge:_duplicate_filter,_first_wins,_all_removed
+=== RUN   TestNumericFilters/parseViews/edge:_keyword_is_case_sensitive
+=== RUN   TestNumericFilters/parseViews/error:_no_digits
+=== RUN   TestNumericFilters/parseViews/error:_negative_number
+=== RUN   TestNumericFilters/parseViews/error:_letters_instead_of_digits
+=== RUN   TestNumericFilters/parseViews/error:_space_after_colon
+=== RUN   TestNumericFilters/parseAnswers/normal:_filter_only
+=== RUN   TestNumericFilters/parseAnswers/normal:_filter_after_text
+=== RUN   TestNumericFilters/parseAnswers/normal:_surrounded_by_spaces
+=== RUN   TestNumericFilters/parseAnswers/edge:_zero_is_valid_and_differs_from_-1
+=== RUN   TestNumericFilters/parseAnswers/edge:_large_number
+=== RUN   TestNumericFilters/parseAnswers/edge:_empty_query
+=== RUN   TestNumericFilters/parseAnswers/edge:_filter_absent
+=== RUN   TestNumericFilters/parseAnswers/edge:_duplicate_filter,_first_wins,_all_removed
+=== RUN   TestNumericFilters/parseAnswers/edge:_keyword_is_case_sensitive
+=== RUN   TestNumericFilters/parseAnswers/error:_no_digits
+=== RUN   TestNumericFilters/parseAnswers/error:_negative_number
+=== RUN   TestNumericFilters/parseAnswers/error:_letters_instead_of_digits
+=== RUN   TestNumericFilters/parseAnswers/error:_space_after_colon
+--- PASS: TestNumericFilters (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/normal:_filter_only (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/normal:_filter_after_text (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/normal:_surrounded_by_spaces (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/edge:_zero_is_valid_and_differs_from_-1 (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/edge:_large_number (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/edge:_empty_query (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/edge:_filter_absent (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/edge:_duplicate_filter,_first_wins,_all_removed (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/edge:_keyword_is_case_sensitive (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/error:_no_digits (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/error:_negative_number (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/error:_letters_instead_of_digits (0.00s)
+    --- PASS: TestNumericFilters/parseVotes/error:_space_after_colon (0.00s)
+    --- PASS: TestNumericFilters/parseViews/normal:_filter_only (0.00s)
+    --- PASS: TestNumericFilters/parseViews/normal:_filter_after_text (0.00s)
+    --- PASS: TestNumericFilters/parseViews/normal:_surrounded_by_spaces (0.00s)
+    --- PASS: TestNumericFilters/parseViews/edge:_zero_is_valid_and_differs_from_-1 (0.00s)
+    --- PASS: TestNumericFilters/parseViews/edge:_large_number (0.00s)
+    --- PASS: TestNumericFilters/parseViews/edge:_empty_query (0.00s)
+    --- PASS: TestNumericFilters/parseViews/edge:_filter_absent (0.00s)
+    --- PASS: TestNumericFilters/parseViews/edge:_duplicate_filter,_first_wins,_all_removed (0.00s)
+    --- PASS: TestNumericFilters/parseViews/edge:_keyword_is_case_sensitive (0.00s)
+    --- PASS: TestNumericFilters/parseViews/error:_no_digits (0.00s)
+    --- PASS: TestNumericFilters/parseViews/error:_negative_number (0.00s)
+    --- PASS: TestNumericFilters/parseViews/error:_letters_instead_of_digits (0.00s)
+    --- PASS: TestNumericFilters/parseViews/error:_space_after_colon (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/normal:_filter_only (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/normal:_filter_after_text (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/normal:_surrounded_by_spaces (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/edge:_zero_is_valid_and_differs_from_-1 (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/edge:_large_number (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/edge:_empty_query (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/edge:_filter_absent (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/edge:_duplicate_filter,_first_wins,_all_removed (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/edge:_keyword_is_case_sensitive (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/error:_no_digits (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/error:_negative_number (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/error:_letters_instead_of_digits (0.00s)
+    --- PASS: TestNumericFilters/parseAnswers/error:_space_after_colon (0.00s)
+=== RUN   TestParseQuestionID
+=== RUN   TestParseQuestionID/normal:_id_only
+=== RUN   TestParseQuestionID/normal:_id_after_text
+=== RUN   TestParseQuestionID/edge:_id_zero
+=== RUN   TestParseQuestionID/edge:_long_snowflake-like_id_keeps_all_digits
+=== RUN   TestParseQuestionID/edge:_duplicate,_first_wins,_all_removed
+=== RUN   TestParseQuestionID/edge:_absent
+=== RUN   TestParseQuestionID/edge:_empty_query
+=== RUN   TestParseQuestionID/error:_no_digits
+=== RUN   TestParseQuestionID/error:_letters
+=== RUN   TestParseQuestionID/error:_negative
+--- PASS: TestParseQuestionID (0.00s)
+    --- PASS: TestParseQuestionID/normal:_id_only (0.00s)
+    --- PASS: TestParseQuestionID/normal:_id_after_text (0.00s)
+    --- PASS: TestParseQuestionID/edge:_id_zero (0.00s)
+    --- PASS: TestParseQuestionID/edge:_long_snowflake-like_id_keeps_all_digits (0.00s)
+    --- PASS: TestParseQuestionID/edge:_duplicate,_first_wins,_all_removed (0.00s)
+    --- PASS: TestParseQuestionID/edge:_absent (0.00s)
+    --- PASS: TestParseQuestionID/edge:_empty_query (0.00s)
+    --- PASS: TestParseQuestionID/error:_no_digits (0.00s)
+    --- PASS: TestParseQuestionID/error:_letters (0.00s)
+    --- PASS: TestParseQuestionID/error:_negative (0.00s)
+=== RUN   TestBooleanFlags
+=== RUN   TestBooleanFlags/parseNotAccepted/normal:_flag_only
+=== RUN   TestBooleanFlags/parseNotAccepted/normal:_flag_after_text
+=== RUN   TestBooleanFlags/parseNotAccepted/normal:_flag_before_text
+=== RUN   TestBooleanFlags/parseNotAccepted/edge:_empty_query
+=== RUN   TestBooleanFlags/parseNotAccepted/edge:_flag_absent
+=== RUN   TestBooleanFlags/parseNotAccepted/edge:_repeated_flag_removes_all
+=== RUN   TestBooleanFlags/parseNotAccepted/edge:_keyword_is_case_sensitive
+=== RUN   TestBooleanFlags/parseNotAccepted/error:_near_miss_does_not_trigger
+=== RUN   TestBooleanFlags/parseIsQuestion/normal:_flag_only
+=== RUN   TestBooleanFlags/parseIsQuestion/normal:_flag_after_text
+=== RUN   TestBooleanFlags/parseIsQuestion/normal:_flag_before_text
+=== RUN   TestBooleanFlags/parseIsQuestion/edge:_empty_query
+=== RUN   TestBooleanFlags/parseIsQuestion/edge:_flag_absent
+=== RUN   TestBooleanFlags/parseIsQuestion/edge:_repeated_flag_removes_all
+=== RUN   TestBooleanFlags/parseIsQuestion/edge:_keyword_is_case_sensitive
+=== RUN   TestBooleanFlags/parseIsQuestion/error:_near_miss_does_not_trigger
+=== RUN   TestBooleanFlags/parseAccepted/normal:_flag_only
+=== RUN   TestBooleanFlags/parseAccepted/normal:_flag_after_text
+=== RUN   TestBooleanFlags/parseAccepted/normal:_flag_before_text
+=== RUN   TestBooleanFlags/parseAccepted/edge:_empty_query
+=== RUN   TestBooleanFlags/parseAccepted/edge:_flag_absent
+=== RUN   TestBooleanFlags/parseAccepted/edge:_repeated_flag_removes_all
+=== RUN   TestBooleanFlags/parseAccepted/edge:_keyword_is_case_sensitive
+=== RUN   TestBooleanFlags/parseAccepted/error:_near_miss_does_not_trigger
+=== RUN   TestBooleanFlags/parseIsAnswer/normal:_flag_only
+=== RUN   TestBooleanFlags/parseIsAnswer/normal:_flag_after_text
+=== RUN   TestBooleanFlags/parseIsAnswer/normal:_flag_before_text
+=== RUN   TestBooleanFlags/parseIsAnswer/edge:_empty_query
+=== RUN   TestBooleanFlags/parseIsAnswer/edge:_flag_absent
+=== RUN   TestBooleanFlags/parseIsAnswer/edge:_repeated_flag_removes_all
+=== RUN   TestBooleanFlags/parseIsAnswer/edge:_keyword_is_case_sensitive
+=== RUN   TestBooleanFlags/parseIsAnswer/error:_near_miss_does_not_trigger
+--- PASS: TestBooleanFlags (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/normal:_flag_only (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/normal:_flag_after_text (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/normal:_flag_before_text (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/edge:_empty_query (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/edge:_flag_absent (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/edge:_repeated_flag_removes_all (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/edge:_keyword_is_case_sensitive (0.00s)
+    --- PASS: TestBooleanFlags/parseNotAccepted/error:_near_miss_does_not_trigger (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/normal:_flag_only (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/normal:_flag_after_text (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/normal:_flag_before_text (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/edge:_empty_query (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/edge:_flag_absent (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/edge:_repeated_flag_removes_all (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/edge:_keyword_is_case_sensitive (0.00s)
+    --- PASS: TestBooleanFlags/parseIsQuestion/error:_near_miss_does_not_trigger (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/normal:_flag_only (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/normal:_flag_after_text (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/normal:_flag_before_text (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/edge:_empty_query (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/edge:_flag_absent (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/edge:_repeated_flag_removes_all (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/edge:_keyword_is_case_sensitive (0.00s)
+    --- PASS: TestBooleanFlags/parseAccepted/error:_near_miss_does_not_trigger (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/normal:_flag_only (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/normal:_flag_after_text (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/normal:_flag_before_text (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/edge:_empty_query (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/edge:_flag_absent (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/edge:_repeated_flag_removes_all (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/edge:_keyword_is_case_sensitive (0.00s)
+    --- PASS: TestBooleanFlags/parseIsAnswer/error:_near_miss_does_not_trigger (0.00s)
+=== RUN   TestParseWithin
+=== RUN   TestParseWithin/normal:_single_phrase
+=== RUN   TestParseWithin/normal:_phrase_after_text
+=== RUN   TestParseWithin/normal:_two_phrases
+=== RUN   TestParseWithin/normal:_unicode_phrase
+=== RUN   TestParseWithin/edge:_one_character_phrase
+=== RUN   TestParseWithin/edge:_empty_query
+=== RUN   TestParseWithin/edge:_no_quotes
+=== RUN   TestParseWithin/edge:_empty_quotes_are_not_a_phrase
+=== RUN   TestParseWithin/error:_unbalanced_quote
+=== RUN   TestParseWithin/error:_odd_number_of_quotes
+--- PASS: TestParseWithin (0.00s)
+    --- PASS: TestParseWithin/normal:_single_phrase (0.00s)
+    --- PASS: TestParseWithin/normal:_phrase_after_text (0.00s)
+    --- PASS: TestParseWithin/normal:_two_phrases (0.00s)
+    --- PASS: TestParseWithin/normal:_unicode_phrase (0.00s)
+    --- PASS: TestParseWithin/edge:_one_character_phrase (0.00s)
+    --- PASS: TestParseWithin/edge:_empty_query (0.00s)
+    --- PASS: TestParseWithin/edge:_no_quotes (0.00s)
+    --- PASS: TestParseWithin/edge:_empty_quotes_are_not_a_phrase (0.00s)
+    --- PASS: TestParseWithin/error:_unbalanced_quote (0.00s)
+    --- PASS: TestParseWithin/error:_odd_number_of_quotes (0.00s)
+=== RUN   TestParseUserID_NoDatabasePaths
+=== RUN   TestParseUserID_NoDatabasePaths/normal:_user:me_returns_current_user
+=== RUN   TestParseUserID_NoDatabasePaths/normal:_user:me_after_text
+=== RUN   TestParseUserID_NoDatabasePaths/edge:_user:me_while_logged_out
+=== RUN   TestParseUserID_NoDatabasePaths/edge:_empty_query
+=== RUN   TestParseUserID_NoDatabasePaths/edge:_no_user_filter
+=== RUN   TestParseUserID_NoDatabasePaths/error:_user:_without_name
+=== RUN   TestParseUserID_NoDatabasePaths/error:_space_after_colon
+--- PASS: TestParseUserID_NoDatabasePaths (0.00s)
+    --- PASS: TestParseUserID_NoDatabasePaths/normal:_user:me_returns_current_user (0.00s)
+    --- PASS: TestParseUserID_NoDatabasePaths/normal:_user:me_after_text (0.00s)
+    --- PASS: TestParseUserID_NoDatabasePaths/edge:_user:me_while_logged_out (0.00s)
+    --- PASS: TestParseUserID_NoDatabasePaths/edge:_empty_query (0.00s)
+    --- PASS: TestParseUserID_NoDatabasePaths/edge:_no_user_filter (0.00s)
+    --- PASS: TestParseUserID_NoDatabasePaths/error:_user:_without_name (0.00s)
+    --- PASS: TestParseUserID_NoDatabasePaths/error:_space_after_colon (0.00s)
+=== RUN   TestParseUserID_MePrefixCollision_CurrentBehavior
+--- PASS: TestParseUserID_MePrefixCollision_CurrentBehavior (0.00s)
+=== RUN   TestParseStructure
+=== RUN   TestParseStructure/normal:_plain_words
+=== RUN   TestParseStructure/normal:_is:question_sets_question_target
+=== RUN   TestParseStructure/normal:_is:answer_sets_answer_target
+=== RUN   TestParseStructure/normal:_hasaccepted:no_implies_question
+=== RUN   TestParseStructure/normal:_isaccepted:yes_implies_answer
+=== RUN   TestParseStructure/normal:_inquestion:ID_implies_answer
+=== RUN   TestParseStructure/normal:_score_applies_to_all_types
+=== RUN   TestParseStructure/normal:_user:me_uses_current_user
+=== RUN   TestParseStructure/normal:_exact_phrase_is_kept_with_quotes
+=== RUN   TestParseStructure/normal:_several_filters_at_once
+=== RUN   TestParseStructure/edge:_empty_query
+=== RUN   TestParseStructure/edge:_only_spaces
+=== RUN   TestParseStructure/edge:_views:0_still_implies_question
+=== RUN   TestParseStructure/edge:_answers:0_still_implies_question
+=== RUN   TestParseStructure/edge:_score:0_does_not_set_a_target
+=== RUN   TestParseStructure/edge:_4_words_are_kept
+=== RUN   TestParseStructure/edge:_exactly_5_words_are_kept_(limit)
+=== RUN   TestParseStructure/edge:_6_words_are_cut_to_5
+=== RUN   TestParseStructure/edge:_phrase_counts_toward_the_5_word_limit
+=== RUN   TestParseStructure/edge:_conflicting_filters,_last_rule_wins_(views_then_isaccepted)
+=== RUN   TestParseStructure/edge:_is:question_and_is:answer_together,_is:answer_wins
+=== RUN   TestParseStructure/error:_negative_score_is_not_a_filter
+=== RUN   TestParseStructure/error:_views_without_digits_stays_a_word
+=== RUN   TestParseStructure/error:_unbalanced_quote_stays_a_word
+--- PASS: TestParseStructure (0.00s)
+    --- PASS: TestParseStructure/normal:_plain_words (0.00s)
+    --- PASS: TestParseStructure/normal:_is:question_sets_question_target (0.00s)
+    --- PASS: TestParseStructure/normal:_is:answer_sets_answer_target (0.00s)
+    --- PASS: TestParseStructure/normal:_hasaccepted:no_implies_question (0.00s)
+    --- PASS: TestParseStructure/normal:_isaccepted:yes_implies_answer (0.00s)
+    --- PASS: TestParseStructure/normal:_inquestion:ID_implies_answer (0.00s)
+    --- PASS: TestParseStructure/normal:_score_applies_to_all_types (0.00s)
+    --- PASS: TestParseStructure/normal:_user:me_uses_current_user (0.00s)
+    --- PASS: TestParseStructure/normal:_exact_phrase_is_kept_with_quotes (0.00s)
+    --- PASS: TestParseStructure/normal:_several_filters_at_once (0.00s)
+    --- PASS: TestParseStructure/edge:_empty_query (0.00s)
+    --- PASS: TestParseStructure/edge:_only_spaces (0.00s)
+    --- PASS: TestParseStructure/edge:_views:0_still_implies_question (0.00s)
+    --- PASS: TestParseStructure/edge:_answers:0_still_implies_question (0.00s)
+    --- PASS: TestParseStructure/edge:_score:0_does_not_set_a_target (0.00s)
+    --- PASS: TestParseStructure/edge:_4_words_are_kept (0.00s)
+    --- PASS: TestParseStructure/edge:_exactly_5_words_are_kept_(limit) (0.00s)
+    --- PASS: TestParseStructure/edge:_6_words_are_cut_to_5 (0.00s)
+    --- PASS: TestParseStructure/edge:_phrase_counts_toward_the_5_word_limit (0.00s)
+    --- PASS: TestParseStructure/edge:_conflicting_filters,_last_rule_wins_(views_then_isaccepted) (0.00s)
+    --- PASS: TestParseStructure/edge:_is:question_and_is:answer_together,_is:answer_wins (0.00s)
+    --- PASS: TestParseStructure/error:_negative_score_is_not_a_filter (0.00s)
+    --- PASS: TestParseStructure/error:_views_without_digits_stays_a_word (0.00s)
+    --- PASS: TestParseStructure/error:_unbalanced_quote_stays_a_word (0.00s)
+=== RUN   TestParseStructure_KnownBug_EmptyWords
+    search_parser_test.go:403: documents a known bug; set RUN_KNOWN_BUG_TESTS=1 to run
+--- SKIP: TestParseStructure_KnownBug_EmptyWords (0.00s)
+=== RUN   TestFilters_KnownBug_NoWordBoundary
+    search_parser_test.go:430: documents a known bug; set RUN_KNOWN_BUG_TESTS=1 to run
+--- SKIP: TestFilters_KnownBug_NoWordBoundary (0.00s)
+PASS
+ok  	github.com/apache/answer/internal/service/search_parser	(cached)

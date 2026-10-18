@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>search_parser: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/apache/answer/internal/service/search_parser/search_parser.go (80.3%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+package search_parser
+
+import (
+        "context"
+        "fmt"
+        "regexp"
+        "strings"
+
+        "github.com/apache/answer/internal/base/constant"
+
+        "github.com/apache/answer/internal/schema"
+        "github.com/apache/answer/internal/service/tag_common"
+        usercommon "github.com/apache/answer/internal/service/user_common"
+        "github.com/apache/answer/pkg/converter"
+)
+
+type SearchParser struct {
+        tagCommonService *tag_common.TagCommonService
+        userCommon       *usercommon.UserCommon
+}
+
+func NewSearchParser(tagCommonService *tag_common.TagCommonService, userCommon *usercommon.UserCommon) *SearchParser {
+        <span class="cov0" title="0">return &amp;SearchParser{
+                tagCommonService: tagCommonService,
+                userCommon:       userCommon,
+</span>        }
+}
+
+// ParseStructure parse search structure, maybe match one of type all/questions/answers,
+// but if match two type, it will return false
+func (sp *SearchParser) ParseStructure(ctx context.Context, dto *schema.SearchDTO) (cond *schema.SearchCondition) {
+        <span class="cov8" title="1">cond = &amp;schema.SearchCondition{}
+        var (
+                query      = dto.Query
+                limitWords = 5
+        )
+</span>
+        // match tags
+        <span class="cov8" title="1">cond.Tags = sp.parseTags(ctx, &amp;query)
+</span>
+        // match all
+        <span class="cov8" title="1">cond.UserID = sp.parseUserID(ctx, &amp;query, dto.UserID)
+        cond.VoteAmount = sp.parseVotes(&amp;query)
+        cond.Words = sp.parseWithin(&amp;query)
+</span>
+        // match questions
+        <span class="cov8" title="1">cond.NotAccepted = sp.parseNotAccepted(&amp;query)
+        if cond.NotAccepted </span>{
+                <span class="cov8" title="1">cond.TargetType = constant.QuestionObjectType
+</span>        }
+        <span class="cov8" title="1">cond.Views = sp.parseViews(&amp;query)
+        if cond.Views != -1 </span>{
+                <span class="cov8" title="1">cond.TargetType = constant.QuestionObjectType
+</span>        }
+        <span class="cov8" title="1">cond.AnswerAmount = sp.parseAnswers(&amp;query)
+        if cond.AnswerAmount != -1 </span>{
+                <span class="cov8" title="1">cond.TargetType = constant.QuestionObjectType
+</span>        }
+
+        // match answers
+        <span class="cov8" title="1">cond.Accepted = sp.parseAccepted(&amp;query)
+        if cond.Accepted </span>{
+                <span class="cov8" title="1">cond.TargetType = constant.AnswerObjectType
+</span>        }
+        <span class="cov8" title="1">cond.QuestionID = sp.parseQuestionID(&amp;query)
+        if cond.QuestionID != "" </span>{
+                <span class="cov8" title="1">cond.TargetType = constant.AnswerObjectType
+</span>        }
+
+        <span class="cov8" title="1">if sp.parseIsQuestion(&amp;query) </span>{
+                <span class="cov8" title="1">cond.TargetType = constant.QuestionObjectType
+</span>        }
+        <span class="cov8" title="1">if sp.parseIsAnswer(&amp;query) </span>{
+                <span class="cov8" title="1">cond.TargetType = constant.AnswerObjectType
+</span>        }
+
+        <span class="cov8" title="1">if len(strings.TrimSpace(query)) &gt; 0 </span>{
+                <span class="cov8" title="1">words := strings.Split(strings.TrimSpace(query), " ")
+                cond.Words = append(cond.Words, words...)
+</span>        }
+
+        // check limit words
+        <span class="cov8" title="1">if len(cond.Words) &gt; limitWords </span>{
+                <span class="cov8" title="1">cond.Words = cond.Words[:limitWords]
+</span>        }
+        <span class="cov8" title="1">return</span>
+}
+
+// parseTags parse search tags, return tag ids array
+func (sp *SearchParser) parseTags(ctx context.Context, query *string) (tags [][]string) {
+        <span class="cov8" title="1">var (
+                // expire tag pattern
+                exprTag = `\[(.*?)\]`
+                q       = *query
+                limit   = 5
+        )
+</span>
+        <span class="cov8" title="1">re := regexp.MustCompile(exprTag)
+        res := re.FindAllStringSubmatch(q, -1)
+        if len(res) == 0 </span>{
+                <span class="cov8" title="1">return
+</span>        }
+
+        <span class="cov0" title="0">tags = make([][]string, 0)
+        for _, item := range res </span>{
+                <span class="cov0" title="0">tagGroup := make([]string, 0)
+                tag, exists, err := sp.tagCommonService.GetTagBySlugName(ctx, item[1])
+                if err != nil || !exists </span>{
+                        <span class="cov0" title="0">continue</span>
+                }
+                <span class="cov0" title="0">tagGroup = append(tagGroup, tag.ID)
+                if tag.MainTagID &gt; 0 </span>{
+                        <span class="cov0" title="0">tagGroup = append(tagGroup, fmt.Sprintf("%d", tag.MainTagID))
+</span>                }
+                <span class="cov0" title="0">synIDs, err := sp.tagCommonService.GetTagIDsByMainTagID(ctx, tag.ID)
+                if err != nil || !exists </span>{
+                        <span class="cov0" title="0">continue</span>
+                }
+                <span class="cov0" title="0">tagGroup = append(tagGroup, tag.ID)
+                tagGroup = append(tagGroup, synIDs...)
+                tagGroup = converter.UniqueArray(tagGroup)
+                tags = append(tags, tagGroup)</span>
+        }
+
+        // limit maximum 5 tags
+        <span class="cov0" title="0">if len(tags) &gt; limit </span>{
+                <span class="cov0" title="0">tags = tags[:limit]
+</span>        }
+
+        <span class="cov0" title="0">q = strings.TrimSpace(re.ReplaceAllString(q, ""))
+        *query = q
+        return</span>
+}
+
+// parseUserID return user id or current login user id
+func (sp *SearchParser) parseUserID(ctx context.Context, query *string, currentUserID string) (userID string) {
+        <span class="cov8" title="1">var (
+                exprUsername = `user:(\S+)`
+                exprMe       = "user:me"
+                q            = *query
+        )
+</span>
+        <span class="cov8" title="1">re := regexp.MustCompile(exprUsername)
+        res := re.FindStringSubmatch(q)
+        if strings.Contains(q, exprMe) </span>{
+                <span class="cov8" title="1">userID = currentUserID
+                q = strings.ReplaceAll(q, exprMe, "")
+</span>        } else <span class="cov8" title="1">if len(res) &gt; 1 </span>{
+                <span class="cov0" title="0">name := res[1]
+                user, has, err := sp.userCommon.GetUserBasicInfoByUserName(ctx, name)
+                if err == nil &amp;&amp; has </span>{
+                        <span class="cov0" title="0">userID = user.ID
+                        q = re.ReplaceAllString(q, "")
+</span>                }
+        }
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseVotes return the votes of search query
+func (sp *SearchParser) parseVotes(query *string) (votes int) {
+        <span class="cov8" title="1">var (
+                expr = `score:(\d+)`
+                q    = *query
+        )
+        votes = -1
+</span>
+        <span class="cov8" title="1">re := regexp.MustCompile(expr)
+        res := re.FindStringSubmatch(q)
+        if len(res) &gt; 1 </span>{
+                <span class="cov8" title="1">votes = converter.StringToInt(res[1])
+                q = re.ReplaceAllString(q, "")
+</span>        }
+
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseWithin parse quotes within words like: "hello world"
+func (sp *SearchParser) parseWithin(query *string) (words []string) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `(?U)(".+")`
+        )
+        re := regexp.MustCompile(expr)
+        matches := re.FindAllStringSubmatch(q, -1)
+        words = []string{}
+        for _, match := range matches </span>{
+                <span class="cov8" title="1">if len(match[1]) == 0 </span>{
+                        <span class="cov0" title="0">continue</span>
+                }
+                <span class="cov8" title="1">words = append(words, match[1])</span>
+        }
+        <span class="cov8" title="1">q = re.ReplaceAllString(q, "")
+        *query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseNotAccepted return the question has not accepted the answer
+func (sp *SearchParser) parseNotAccepted(query *string) (notAccepted bool) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `hasaccepted:no`
+        )
+</span>
+        <span class="cov8" title="1">if strings.Contains(q, expr) </span>{
+                <span class="cov8" title="1">q = strings.ReplaceAll(q, expr, "")
+                notAccepted = true
+</span>        }
+
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseIsQuestion check the result if only limit question or not
+func (sp *SearchParser) parseIsQuestion(query *string) (isQuestion bool) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `is:question`
+        )
+</span>
+        <span class="cov8" title="1">if strings.Contains(q, expr) </span>{
+                <span class="cov8" title="1">q = strings.ReplaceAll(q, expr, "")
+                isQuestion = true
+</span>        }
+
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseViews check search has views or not
+func (sp *SearchParser) parseViews(query *string) (views int) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `views:(\d+)`
+        )
+        views = -1
+</span>
+        <span class="cov8" title="1">re := regexp.MustCompile(expr)
+        res := re.FindStringSubmatch(q)
+        if len(res) &gt; 1 </span>{
+                <span class="cov8" title="1">views = converter.StringToInt(res[1])
+                q = re.ReplaceAllString(q, "")
+</span>        }
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseAnswers check whether specified answer count for question
+func (sp *SearchParser) parseAnswers(query *string) (answers int) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `answers:(\d+)`
+        )
+        answers = -1
+</span>
+        <span class="cov8" title="1">re := regexp.MustCompile(expr)
+        res := re.FindStringSubmatch(q)
+        if len(res) &gt; 1 </span>{
+                <span class="cov8" title="1">answers = converter.StringToInt(res[1])
+                q = re.ReplaceAllString(q, "")
+</span>        }
+
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseAccepted check the search is limit accepted answer or not
+func (sp *SearchParser) parseAccepted(query *string) (accepted bool) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `isaccepted:yes`
+        )
+</span>
+        <span class="cov8" title="1">if strings.Contains(q, expr) </span>{
+                <span class="cov8" title="1">accepted = true
+                q = strings.ReplaceAll(q, expr, "")
+</span>        }
+
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseQuestionID check whether specified question's id
+func (sp *SearchParser) parseQuestionID(query *string) (questionID string) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `inquestion:(\d+)`
+        )
+</span>
+        <span class="cov8" title="1">re := regexp.MustCompile(expr)
+        res := re.FindStringSubmatch(q)
+        if len(res) == 2 </span>{
+                <span class="cov8" title="1">questionID = res[1]
+                q = re.ReplaceAllString(q, "")
+</span>        }
+
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+
+// parseIsAnswer check the result if only limit answer or not
+func (sp *SearchParser) parseIsAnswer(query *string) (isAnswer bool) {
+        <span class="cov8" title="1">var (
+                q    = *query
+                expr = `is:answer`
+        )
+</span>
+        <span class="cov8" title="1">if strings.Contains(q, expr) </span>{
+                <span class="cov8" title="1">isAnswer = true
+                q = strings.ReplaceAll(q, expr, "")
+</span>        }
+
+        <span class="cov8" title="1">*query = strings.TrimSpace(q)
+        return</span>
+}
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

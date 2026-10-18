@@ -1,0 +1,65 @@
+=== RUN   TestNumToShortID_KnownBug_Collisions
+=== RUN   TestNumToShortID_KnownBug_Collisions/18_digit_id_must_not_collide_with_the_17_digit_id
+    sid_test.go:356: 
+        	Error Trace:	D:/sqa/answer/pkg/uid/sid_test.go:356
+        	Error:      	Should not be: "D1D1"
+        	Test:       	TestNumToShortID_KnownBug_Collisions/18_digit_id_must_not_collide_with_the_17_digit_id
+        	Messages:   	collides with 10010000000000001
+    sid_test.go:357: 
+        	Error Trace:	D:/sqa/answer/pkg/uid/sid_test.go:357
+        	Error:      	Not equal: 
+        	            	expected: 100100000000000001
+        	            	actual  : 10010000000000001
+        	Test:       	TestNumToShortID_KnownBug_Collisions/18_digit_id_must_not_collide_with_the_17_digit_id
+        	Messages:   	short id must decode back to the input
+=== RUN   TestNumToShortID_KnownBug_Collisions/different_leading_digit_must_not_collide
+    sid_test.go:365: 
+        	Error Trace:	D:/sqa/answer/pkg/uid/sid_test.go:365
+        	Error:      	Should not be: "D1D1"
+        	Test:       	TestNumToShortID_KnownBug_Collisions/different_leading_digit_must_not_collide
+        	Messages:   	collides with 10010000000000001
+--- FAIL: TestNumToShortID_KnownBug_Collisions (0.00s)
+    --- FAIL: TestNumToShortID_KnownBug_Collisions/18_digit_id_must_not_collide_with_the_17_digit_id (0.00s)
+    --- FAIL: TestNumToShortID_KnownBug_Collisions/different_leading_digit_must_not_collide (0.00s)
+=== RUN   TestNormalizeOptionalID_KnownIssue_GarbageInput
+=== RUN   TestNormalizeOptionalID_KnownIssue_GarbageInput/abc
+    sid_test.go:378: 
+        	Error Trace:	D:/sqa/answer/pkg/uid/sid_test.go:378
+        	Error:      	Should be false
+        	Test:       	TestNormalizeOptionalID_KnownIssue_GarbageInput/abc
+        	Messages:   	garbage "abc" was accepted as id "15919999999999912"
+=== RUN   TestNormalizeOptionalID_KnownIssue_GarbageInput/not-an-id
+    sid_test.go:378: 
+        	Error Trace:	D:/sqa/answer/pkg/uid/sid_test.go:378
+        	Error:      	Should be false
+        	Test:       	TestNormalizeOptionalID_KnownIssue_GarbageInput/not-an-id
+        	Messages:   	garbage "not-an-id" was accepted as id "24110754898973481"
+=== RUN   TestNormalizeOptionalID_KnownIssue_GarbageInput/hello_world
+    sid_test.go:378: 
+        	Error Trace:	D:/sqa/answer/pkg/uid/sid_test.go:378
+        	Error:      	Should be false
+        	Test:       	TestNormalizeOptionalID_KnownIssue_GarbageInput/hello_world
+        	Messages:   	garbage "hello world" was accepted as id "20763931345818983"
+--- FAIL: TestNormalizeOptionalID_KnownIssue_GarbageInput (0.00s)
+    --- FAIL: TestNormalizeOptionalID_KnownIssue_GarbageInput/abc (0.00s)
+    --- FAIL: TestNormalizeOptionalID_KnownIssue_GarbageInput/not-an-id (0.00s)
+    --- FAIL: TestNormalizeOptionalID_KnownIssue_GarbageInput/hello_world (0.00s)
+=== RUN   TestNormalizeOptionalID_KnownIssue_PlusSign
+    sid_test.go:389: 
+        	Error Trace:	D:/sqa/answer/pkg/uid/sid_test.go:389
+        	Error:      	Not equal: 
+        	            	expected: "10010000000000001"
+        	            	actual  : "+10010000000000001"
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1 +1 @@
+        	            	-10010000000000001
+        	            	++10010000000000001
+        	Test:       	TestNormalizeOptionalID_KnownIssue_PlusSign
+        	Messages:   	normalized id must not keep the plus sign
+--- FAIL: TestNormalizeOptionalID_KnownIssue_PlusSign (0.00s)
+FAIL
+FAIL	github.com/apache/answer/pkg/uid	0.070s
+FAIL

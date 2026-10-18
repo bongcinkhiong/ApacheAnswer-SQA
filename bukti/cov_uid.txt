@@ -1,0 +1,13 @@
+github.com/apache/answer/pkg/uid/id.go:36:	init			83.3%
+github.com/apache/answer/pkg/uid/id.go:46:	ID			100.0%
+github.com/apache/answer/pkg/uid/id.go:51:	IDStr12			100.0%
+github.com/apache/answer/pkg/uid/id.go:56:	IDStr			100.0%
+github.com/apache/answer/pkg/uid/sid.go:32:	NumToShortID		85.7%
+github.com/apache/answer/pkg/uid/sid.go:53:	ShortIDToNum		100.0%
+github.com/apache/answer/pkg/uid/sid.go:65:	EnShortID		100.0%
+github.com/apache/answer/pkg/uid/sid.go:73:	DeShortID		100.0%
+github.com/apache/answer/pkg/uid/sid.go:84:	IsShortID		100.0%
+github.com/apache/answer/pkg/uid/sid.go:96:	IsValidNumericID	100.0%
+github.com/apache/answer/pkg/uid/sid.go:111:	NormalizeOptionalID	100.0%
+github.com/apache/answer/pkg/uid/sid.go:125:	NormalizeRequiredID	100.0%
+total:						(statements)		95.5%

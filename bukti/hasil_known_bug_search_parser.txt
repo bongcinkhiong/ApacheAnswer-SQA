@@ -1,0 +1,126 @@
+=== RUN   TestParseStructure_KnownBug_EmptyWords
+=== RUN   TestParseStructure_KnownBug_EmptyWords/filter_in_the_middle
+    search_parser_test.go:419: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:419
+        	Error:      	Not equal: 
+        	            	expected: []string{"foo", "bar"}
+        	            	actual  : []string{"foo", "", "bar"}
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1,3 +1,4 @@
+        	            	-([]string) (len=2) {
+        	            	+([]string) (len=3) {
+        	            	  (string) (len=3) "foo",
+        	            	+ (string) "",
+        	            	  (string) (len=3) "bar"
+        	Test:       	TestParseStructure_KnownBug_EmptyWords/filter_in_the_middle
+    search_parser_test.go:421: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:421
+        	Error:      	Should NOT be empty, but was 
+        	Test:       	TestParseStructure_KnownBug_EmptyWords/filter_in_the_middle
+        	Messages:   	empty search word in [foo  bar]
+=== RUN   TestParseStructure_KnownBug_EmptyWords/two_typed_spaces
+    search_parser_test.go:419: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:419
+        	Error:      	Not equal: 
+        	            	expected: []string{"hello", "world"}
+        	            	actual  : []string{"hello", "", "world"}
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1,3 +1,4 @@
+        	            	-([]string) (len=2) {
+        	            	+([]string) (len=3) {
+        	            	  (string) (len=5) "hello",
+        	            	+ (string) "",
+        	            	  (string) (len=5) "world"
+        	Test:       	TestParseStructure_KnownBug_EmptyWords/two_typed_spaces
+    search_parser_test.go:421: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:421
+        	Error:      	Should NOT be empty, but was 
+        	Test:       	TestParseStructure_KnownBug_EmptyWords/two_typed_spaces
+        	Messages:   	empty search word in [hello  world]
+=== RUN   TestParseStructure_KnownBug_EmptyWords/phrase_in_the_middle
+    search_parser_test.go:419: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:419
+        	Error:      	Not equal: 
+        	            	expected: []string{"\"bar baz\"", "foo", "qux"}
+        	            	actual  : []string{"\"bar baz\"", "foo", "", "qux"}
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1,4 +1,5 @@
+        	            	-([]string) (len=3) {
+        	            	+([]string) (len=4) {
+        	            	  (string) (len=9) "\"bar baz\"",
+        	            	  (string) (len=3) "foo",
+        	            	+ (string) "",
+        	            	  (string) (len=3) "qux"
+        	Test:       	TestParseStructure_KnownBug_EmptyWords/phrase_in_the_middle
+    search_parser_test.go:421: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:421
+        	Error:      	Should NOT be empty, but was 
+        	Test:       	TestParseStructure_KnownBug_EmptyWords/phrase_in_the_middle
+        	Messages:   	empty search word in ["bar baz" foo  qux]
+--- FAIL: TestParseStructure_KnownBug_EmptyWords (0.00s)
+    --- FAIL: TestParseStructure_KnownBug_EmptyWords/filter_in_the_middle (0.00s)
+    --- FAIL: TestParseStructure_KnownBug_EmptyWords/two_typed_spaces (0.00s)
+    --- FAIL: TestParseStructure_KnownBug_EmptyWords/phrase_in_the_middle (0.00s)
+=== RUN   TestFilters_KnownBug_NoWordBoundary
+=== RUN   TestFilters_KnownBug_NoWordBoundary/highscore:5_must_not_set_votes
+    search_parser_test.go:435: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:435
+        	Error:      	Not equal: 
+        	            	expected: -1
+        	            	actual  : 5
+        	Test:       	TestFilters_KnownBug_NoWordBoundary/highscore:5_must_not_set_votes
+    search_parser_test.go:436: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:436
+        	Error:      	Not equal: 
+        	            	expected: "highscore:5"
+        	            	actual  : "high"
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1 +1 @@
+        	            	-highscore:5
+        	            	+high
+        	Test:       	TestFilters_KnownBug_NoWordBoundary/highscore:5_must_not_set_votes
+=== RUN   TestFilters_KnownBug_NoWordBoundary/reviews:3_must_not_set_views
+    search_parser_test.go:440: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:440
+        	Error:      	Not equal: 
+        	            	expected: -1
+        	            	actual  : 3
+        	Test:       	TestFilters_KnownBug_NoWordBoundary/reviews:3_must_not_set_views
+    search_parser_test.go:441: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:441
+        	Error:      	Not equal: 
+        	            	expected: "reviews:3"
+        	            	actual  : "re"
+        	            	
+        	            	Diff:
+        	            	--- Expected
+        	            	+++ Actual
+        	            	@@ -1 +1 @@
+        	            	-reviews:3
+        	            	+re
+        	Test:       	TestFilters_KnownBug_NoWordBoundary/reviews:3_must_not_set_views
+=== RUN   TestFilters_KnownBug_NoWordBoundary/is:answers_must_not_match_is:answer
+    search_parser_test.go:445: 
+        	Error Trace:	D:/sqa/answer/internal/service/search_parser/search_parser_test.go:445
+        	Error:      	Should be false
+        	Test:       	TestFilters_KnownBug_NoWordBoundary/is:answers_must_not_match_is:answer
+        	Messages:   	leftover query: "s"
+--- FAIL: TestFilters_KnownBug_NoWordBoundary (0.00s)
+    --- FAIL: TestFilters_KnownBug_NoWordBoundary/highscore:5_must_not_set_votes (0.00s)
+    --- FAIL: TestFilters_KnownBug_NoWordBoundary/reviews:3_must_not_set_views (0.00s)
+    --- FAIL: TestFilters_KnownBug_NoWordBoundary/is:answers_must_not_match_is:answer (0.00s)
+FAIL
+FAIL	github.com/apache/answer/internal/service/search_parser	0.096s
+FAIL
